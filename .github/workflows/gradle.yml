@@ -2,6 +2,7 @@ name: Run Gradle on repo activity
 on: [push, pull_request]
 jobs:
   gradle:
+    if: false
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
