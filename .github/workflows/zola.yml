@@ -9,6 +9,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
+      - name: 'Prepare for building'
+        run: |
+          # Add readme and changelog
+          tail -n +8 README.md | sed 's/## /# /g' >> website/content/_index.md
+          tail -n +3 CHANGELOG.md | sed 's/## /# /g' >> website/content/CHANGELOG.md
       - name: 'Build and deploy'
         uses: shalzz/zola-deploy-action@master
         env:
