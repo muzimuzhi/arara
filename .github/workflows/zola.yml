@@ -22,6 +22,8 @@ jobs:
             -not -path "website/themes/*" \
             \( -name '*.md' -o -name '*.css' -o -name '*.toml' \) \
             -exec sed -i $PATTERN {} \;
+          # checkout LFS
+          git lfs pull --include=website
       - name: 'Build and deploy'
         uses: shalzz/zola-deploy-action@master
         env:
